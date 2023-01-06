@@ -18,11 +18,19 @@ Or install it yourself as:
 
     $ gem install takuya-lvm-snapshot
 
+### Installation from github
+Add Following line into Gemfile.
+```
+gem 'takuya-lvm-snapshot', git: 'https://github.com/takuya/ruby-lvm-snapshot-wrapper.git'
+```
+
 ## Usage
 
 create / list / delete lvm snapshot
 ```ruby
+require "takuya/lvm_snapshot"
 LvmSnapShot = Takuya::LvmSnapShot
+
 lvsnap = LvmSnapShot.new('vg_name')
 lvsnap.create('snap_01')
 lvsnap.exists('snap_01')
@@ -34,7 +42,9 @@ lvsnap.remove('snap_01')
 This package make easy to Take Snapshot and backup.
 
 ```ruby
+require "takuya/lvm_snapshot"
 LvmSnapShot = Takuya::LvmSnapShot
+
 LvmSnapShot.new('vg0').enter_snapshot{|mnt|
     ## backup from snapshot 
     FileUtils.cp_r('/mnt/var/lib/mysql', '/nfs/backup/mysql')
@@ -47,7 +57,9 @@ Make use of LVM Snap Shot allows us  to Backup without stopping services.
 
 
 ```ruby
+require "takuya/lvm_snapshot"
 LvmSnapShot = Takuya::LvmSnapShot
+
 LvmSnapShot.new('vg0','lv0','/mnt').enter_snapshot{|mnt|
     ## backup from snapshot 
     src="#{mnt}/var/lib/libvirt/images/my-vm.qcow2"
