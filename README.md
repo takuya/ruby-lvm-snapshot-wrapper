@@ -1,6 +1,19 @@
 # Takuya::Lvm::Snapshot
 
 Wrapper for lvm, to use lvm snapshot. 
+## example 
+
+This package make easy to Take Snapshot and backup.
+
+```ruby
+require "takuya/lvm_snapshot"
+LvmSnapShot = Takuya::LvmSnapShot
+
+LvmSnapShot.new('vg0').enter_snapshot{|mnt|
+    ## backup from snapshot 
+    FileUtils.cp_r('/mnt/var/lib/mysql', '/nfs/backup/mysql')
+}
+```
 
 ## Installation
 
@@ -68,7 +81,14 @@ LvmSnapShot.new('vg0','lv0','/mnt').enter_snapshot{|mnt|
 }
 ```
 
-
+## Testing 
+```sh
+bundle bundle exec rspec spec 
+```
+## Releasing
+```sh
+bundle exec rake release
+```
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake ` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
