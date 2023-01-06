@@ -83,7 +83,7 @@ LvmSnapShot.new('vg0','lv0','/mnt').enter_snapshot{|mnt|
 
 ## Testing 
 ```sh
-bundle bundle exec rspec spec 
+bundle exec rspec spec 
 ```
 ## Releasing
 ```sh
