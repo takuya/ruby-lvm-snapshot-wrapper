@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "lib/takuya/lvm_snapshot/version"
+require_relative "lib/takuya/lvm_snapshot"
 
 Gem::Specification.new do |spec|
   spec.name          = "takuya-lvm-snapshot"
@@ -10,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "wrapper of lvm snapshot for list / create / remove "
   spec.description   = "This package make use of shell command lvcreate / lvremove and mount. Taking file from lvm snapshot."
-  spec.homepage      = "https://github.com/takuya/ruby-lvm-snapshot-wrapper"
+  spec.homepage      = "https://github.com/takuya/ruby-lvm-snapshot-wrapper/"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.4.0")
 
   spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
