@@ -22,14 +22,16 @@ Add this line to your application's Gemfile:
 ```ruby
 gem 'takuya-lvm-snapshot'
 ```
-
 And then execute:
 
-    $ bundle install
-
+```sh
+bundle config set --local path '.bundle'
+bundle install
+```
 Or install it yourself as:
-
-    $ gem install takuya-lvm-snapshot
+```sh
+gem install takuya-lvm-snapshot
+```
 
 ### Installation from github
 Add Following line into Gemfile.
