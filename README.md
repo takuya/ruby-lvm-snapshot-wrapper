@@ -63,7 +63,7 @@ LvmSnapShot = Takuya::LvmSnapShot
 LvmSnapShot.new('vg0').enter_snapshot{|mnt|
     ## make working snapshot.
     ## backup from snapshot.
-    ## without no stopping sevices
+    ## no stopping sevices.
     FileUtils.cp_r('/mnt/var/lib/mysql', '/nfs/backup/mysql')
 }
 ```
