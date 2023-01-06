@@ -75,7 +75,7 @@ Make use of LVM Snap Shot allows us  to Backup without stopping services.
 require "takuya/lvm_snapshot"
 LvmSnapShot = Takuya::LvmSnapShot
 
-LvmSnapShot.new('vg0','lv0','/mnt').enter_snapshot{|mnt|
+LvmSnapShot.new('vg0','lv0','20G','/mnt').enter_snapshot{|mnt|
     ## backup from snapshot 
     src="#{mnt}/var/lib/libvirt/images/my-vm.qcow2"
     cmd="rsync -a '#{src}' myserver:~/my-backup "
