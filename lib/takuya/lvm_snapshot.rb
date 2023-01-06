@@ -52,7 +52,7 @@ class Takuya::LvmSnapShot
     return false if self.mounted(snap_name,mount_point)
 
     target = "/dev/mapper/#{@vg_name}-#{self.escape_lv_name(snap_name)}" 
-    cmd = "mount '#{target}' '#{mount_point}' "
+    cmd = "mount -o ro,nouuid '#{target}' '#{mount_point}' "
     process , stdout, stderr = self.exec_cmd(cmd)
     return process.exitstatus == 0
   end
