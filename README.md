@@ -1,0 +1,68 @@
+# Takuya::Lvm::Snapshot
+
+Wrapper for lvm, to use lvm snapshot. 
+
+## Installation
+
+Add this line to your application's Gemfile:
+
+```ruby
+gem 'takuya-lvm-snapshot'
+```
+
+And then execute:
+
+    $ bundle install
+
+Or install it yourself as:
+
+    $ gem install takuya-lvm-snapshot
+
+## Usage
+
+create / list / delete lvm snapshot
+```ruby
+LvmSnapShot = Takuya::LvmSnapShot
+lvsnap = LvmSnapShot.new('vg_name')
+lvsnap.create('snap_01')
+lvsnap.exists('snap_01')
+lvsnap.mount('snap_01','/mnt')
+lvsnap.unmount('snap_01','/mnt')
+lvsnap.remove('snap_01')
+```
+
+This package make easy to Take Snapshot and backup.
+
+```ruby
+LvmSnapShot = Takuya::LvmSnapShot
+LvmSnapShot.new('vg0').enter_snapshot{|mnt|
+    ## backup from snapshot 
+    FileUtils.cp_r('/mnt/var/lib/mysql', '/nfs/backup/mysql')
+}
+```
+
+
+#### Example.
+Make use of LVM Snap Shot allows us  to Backup without stopping services.
+
+
+```ruby
+LvmSnapShot = Takuya::LvmSnapShot
+LvmSnapShot.new('vg0','lv0','/mnt').enter_snapshot{|mnt|
+    ## backup from snapshot 
+    src="#{mnt}/var/lib/libvirt/images/my-vm.qcow2"
+    cmd="rsync -a '#{src}' myserver:~/my-backup "
+    `#{cmd}`
+}
+```
+
+
+## Development
+
+After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake ` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+
+To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+
+## Contributing
+
+Bug reports and pull requests are welcome on GitHub at https://github.com/takuya/takuya-lvm-snapshot.
