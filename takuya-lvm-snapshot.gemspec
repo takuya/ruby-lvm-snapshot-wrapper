@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require_relative "lib/takuya/lvm_snapshot/version"
-require_relative "lib/takuya/lvm_snapshot"
 
 Gem::Specification.new do |spec|
   spec.name          = "takuya-lvm-snapshot"
