@@ -3,7 +3,7 @@
 Wrapper for lvm, to use lvm snapshot. 
 ## example 
 
-This package make easy to Take Snapshot and backup.
+This package make easy to Take Snapshot and Backup.
 
 ```ruby
 require "takuya/lvm_snapshot"
@@ -14,6 +14,8 @@ LvmSnapShot.new('vg0').enter_snapshot{
     FileUtils.cp_r('/mnt/var/lib/mysql', '/nfs/backup/mysql')
 }
 ```
+
+Using proc call, We can focus on backup steps.
 
 ## Installation
 
