@@ -9,7 +9,7 @@ This package make easy to Take Snapshot and Backup.
 require "takuya/lvm_snapshot"
 LvmSnapShot = Takuya::LvmSnapShot
 
-LvmSnapShot.new('vg0').enter_snapshot{
+LvmSnapShot.new('vg0').enter_snapshot('lv0'){
     ## backup from snapshot 
     FileUtils.cp_r('/mnt/var/lib/mysql', '/nfs/backup/mysql')
 }
