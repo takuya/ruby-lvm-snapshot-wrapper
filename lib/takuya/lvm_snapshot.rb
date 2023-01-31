@@ -86,7 +86,7 @@ class Takuya::LvmSnapShot
   def enter_snapshot(lv_name=@lv_name,&proc)
     name,err,pwd = nil,nil,Dir.pwd
     begin 
-      name = self.create()
+      name = self.create(name,lv_name)
       raise 'snapshot creation failed' unless name
       ret = self.mount(name)
       raise 'snapshot mounting failed' unless ret
